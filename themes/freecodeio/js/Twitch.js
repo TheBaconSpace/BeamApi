@@ -180,10 +180,7 @@ function streamPush() {
             $('#useronline').html('ONLINE');
               $('#useronline').css('opacity','.70');
               $('.videoinfo').html(user.streamdesc);
-<<<<<<< HEAD
-=======
 
->>>>>>> b5b1bab80baf8e8d0b6e52dc34dc174a74e45e5a
         } else {
 
             $('#useronline').addClass('label-danger');
