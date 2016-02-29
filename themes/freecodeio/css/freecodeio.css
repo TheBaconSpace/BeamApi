@@ -15,3 +15,15 @@ body {
 footer {
     margin: 50px 0;
 }
+
+#usernamesearch, #useronline {
+    margin-bottom: 10px;
+    
+    
+}
+
+#useronline, #viewerswatching, #viewers{
+    color:white;
+    font-weight: bold;
+    
+}

@@ -13,8 +13,17 @@ var user = {
   profileurl: '',
   viewers: '0',
   islive: 'false',
-  offlinebanner: ''
+  offlinebanner: '',
+  pastvideo1:'',
+  pastvideo2:'',
+  pastvideo3:'',  
+  pastvideo4:''
 }
+ 
+      
+        
+    
+
 var searchUser = function(name_) { // pull json data from users URL
   $.getJSON('https://api.twitch.tv/kraken/users/' + name_, function(data) {
     console.log(name_);
@@ -22,6 +31,13 @@ var searchUser = function(name_) { // pull json data from users URL
     user.bio = data.bio;
     if (data.logo) {
       user.logo = data.logo;
+
+        user.pastvideo1='http://placehold.it/500x300';
+        user.pastvideo2='http://placehold.it/500x300';
+        user.pastvideo3='http://placehold.it/500x300';
+        user.pastvideo4='http://placehold.it/500x300';
+
+    
     } else {
       user.logo =
         'http://s28.postimg.org/u1io3s5ex/finalmuthauakin_GREG.png';
@@ -31,6 +47,7 @@ var searchUser = function(name_) { // pull json data from users URL
   }).done(function() {
     userPush();
     checkStream();
+       setDefaults();
   });
 
   function checkStream() {
@@ -49,9 +66,39 @@ var searchUser = function(name_) { // pull json data from users URL
       window.alert('FAIL'); // need to update this to something... prettier :)
     }).done(function() {
       streamPush();
+      channelVideosPush();
       checkChannel();
+      
     });
   }
+    
+    // working on pushing previous channels.... 
+    function channelVideosPush(){
+        $.getJSON( "https://api.twitch.tv/kraken/channels/"+name_+"/videos",
+            function(data){
+                if (data._total!=0){
+                if (data.videos[0]){
+                    user.pastvideo1 = data.videos[0].preview;
+                } if (data.videos[1]){
+                     user.pastvideo2 = data.videos[1].preview;
+                }if (data.videos[2]){
+                     user.pastvideo3 = data.videos[2].preview;
+                }if (data.videos[3]){
+                     user.pastvideo4 = data.videos[3].preview;
+                }
+                }
+
+       
+    
+}).done(function(){
+            pastVideoPush();
+            
+    });
+    
+    
+    }
+    
+
 
   function checkChannel() {
     $.getJSON('https://api.twitch.tv/kraken/channels/' + name_,
@@ -69,6 +116,7 @@ var searchUser = function(name_) { // pull json data from users URL
       window.alert('FAIL');
     }).done(function() {
       channelPush();
+ 
     });
   }
 };
@@ -113,6 +161,16 @@ function channelPush() {
   $('#stream_img').attr('src', user.streamlogo);
 }
 
+function pastVideoPush(){
+
+    
+    $('#vid1').attr('src',user.pastvideo1);
+    $('#vid2').attr('src',user.pastvideo2);
+    $('#vid3').attr('src',user.pastvideo3);
+    $('#vid4').attr('src',user.pastvideo4);
+    
+    
+}
 
 
 $('#usernamesearch').keypress(function(event) {
