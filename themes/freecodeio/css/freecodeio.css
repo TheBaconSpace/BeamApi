@@ -16,14 +16,41 @@ footer {
     margin: 50px 0;
 }
 
-#usernamesearch, #useronline {
+#useronline {
     margin-bottom: 10px;
-    
-    
+
+
 }
 
 #useronline, #viewerswatching, #viewers{
     color:white;
     font-weight: bold;
-    
+    cursor: default;
+
+
+}
+
+
+#useronline{
+  position: absolute;
+right: 20px;
+opacity: 1.0;
+}
+
+
+#rightcol{
+      text-align: center;
+}
+#searchbtn{
+
+}
+
+.col-md-4{
+  text-align: center;
+}
+
+.input-group{
+  width: 70%;
+margin-left: auto;
+margin-right: auto;
 }

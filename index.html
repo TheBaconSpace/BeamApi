@@ -88,8 +88,11 @@
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-8">
+      <div class="col-md-8" id ="rightcol">
         <a href="" class="user_url" target="_blank">
+
+            <span id="useronline" class="btn label-success" ><b>ONLINE</b></span>
+
           <img id="stream_img" src="" width="740" height="460" />
         </a>
       </div>
@@ -98,7 +101,7 @@
 
         <div class="row">
 
-          <div class="col-md-8">
+          <div class="col-md-12">
             <a href="" class="user_url" target="_blank">
               <img id="logo" src="" width "150" height="150" />
 
@@ -118,7 +121,7 @@
 
           <div id="streamstatusdiv">
                   <div id="streamstatus">
-    <span id="useronline" class="btn label-success"><b>ONLINE</b></span>
+
       </h5>
           </div>
 
@@ -134,11 +137,16 @@
 
 
             <div>
-
-            <div class="form-group">
+              <div class="input-group">
+                   <input type="text" id="usernamesearch" class="form-control" placeholder="Search Twitch user..">
+                   <span class="input-group-btn">
+                     <button id = "searchbtn" class="btn btn-primary" type="button">Go!</button>
+                   </span>
+                 </div>
+            <!-- <div class="form-group">
             <input type="text" class="form-control" id="usernamesearch">
 
-            <button id="searchbtn" class="btn btn-primary" type="button">Search</button></div>
+            <button id="searchbtn" class="btn btn-primary" type="button">Search</button></div> -->
 
         </div>
           </div>
