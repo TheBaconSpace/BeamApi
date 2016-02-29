@@ -1,5 +1,9 @@
 /* global $ */
+/*
 
+JACKEL'S JS DONT TOUCH :)
+
+*/
 $(document).ready(function() {
   searchUser('freecodecamp'); // on page load, pass user freecodecamp
 
@@ -14,15 +18,38 @@ var user = {
   viewers: '0',
   islive: 'false',
   offlinebanner: '',
+
   pastvideo1:'',
   pastvideo2:'',
-  pastvideo3:'',  
-  pastvideo4:''
+  pastvideo3:'',
+  pastvideo4:'',
+
+  pastvideo1url1:'',
+  pastvideo1url2:'',
+  pastvideo1url3:'',
+  pastvideo1url4:'',
+
+  pastvideo1title:'',
+  pastvideo2title:'',
+  pastvideo3title:'',
+  pastvideo4title:'',
+
+  pastvideo1views: '0',
+  pastvideo2views: '0',
+  pastvideo3views: '0',
+  pastvideo4views: '0',
+
+
 }
- 
-      
-        
-    
+
+      function setDefaults(){
+        user.pastvideo1='http://placehold.it/500x300';
+        user.pastvideo2='http://placehold.it/500x300';
+        user.pastvideo3='http://placehold.it/500x300';
+        user.pastvideo4='http://placehold.it/500x300';
+
+      }
+
 
 var searchUser = function(name_) { // pull json data from users URL
   $.getJSON('https://api.twitch.tv/kraken/users/' + name_, function(data) {
@@ -31,13 +58,10 @@ var searchUser = function(name_) { // pull json data from users URL
     user.bio = data.bio;
     if (data.logo) {
       user.logo = data.logo;
+   setDefaults();
 
-        user.pastvideo1='http://placehold.it/500x300';
-        user.pastvideo2='http://placehold.it/500x300';
-        user.pastvideo3='http://placehold.it/500x300';
-        user.pastvideo4='http://placehold.it/500x300';
 
-    
+
     } else {
       user.logo =
         'http://s28.postimg.org/u1io3s5ex/finalmuthauakin_GREG.png';
@@ -47,7 +71,7 @@ var searchUser = function(name_) { // pull json data from users URL
   }).done(function() {
     userPush();
     checkStream();
-       setDefaults();
+
   });
 
   function checkStream() {
@@ -68,36 +92,54 @@ var searchUser = function(name_) { // pull json data from users URL
       streamPush();
       channelVideosPush();
       checkChannel();
-      
+
     });
   }
-    
-    // working on pushing previous channels.... 
+    /*
+
+    title: videos[0].title
+    view: videos[0].views
+    url: videos[0].url
+    */
+    // working on pushing previous channels....
     function channelVideosPush(){
         $.getJSON( "https://api.twitch.tv/kraken/channels/"+name_+"/videos",
             function(data){
                 if (data._total!=0){
                 if (data.videos[0]){
                     user.pastvideo1 = data.videos[0].preview;
+                    user.pastvideo1title = data.videos[0].title;
+                    user.pastvideo1views = data.videos[0].views;
+                    user.pastvideo1url  =  data.videos[0].url;
+
                 } if (data.videos[1]){
                      user.pastvideo2 = data.videos[1].preview;
+                     user.pastvideo2title = data.videos[1].title;
+                     user.pastvideo2views = data.videos[1].views;
+                     user.pastvideo2url  =  data.videos[1].url;
                 }if (data.videos[2]){
                      user.pastvideo3 = data.videos[2].preview;
+                     user.pastvideo3title = data.videos[2].title;
+                     user.pastvideo3views = data.videos[2].views;
+                     user.pastvideo3url  =  data.videos[2].url;
                 }if (data.videos[3]){
                      user.pastvideo4 = data.videos[3].preview;
+                     user.pastvideo4title = data.videos[3].title;
+                     user.pastvideo4views = data.videos[3].views;
+                     user.pastvideo4url  =  data.videos[3].url;
                 }
                 }
 
-       
-    
+
+
 }).done(function(){
             pastVideoPush();
-            
+
     });
-    
-    
+
+
     }
-    
+
 
 
   function checkChannel() {
@@ -116,7 +158,7 @@ var searchUser = function(name_) { // pull json data from users URL
       window.alert('FAIL');
     }).done(function() {
       channelPush();
- 
+
     });
   }
 };
@@ -163,13 +205,21 @@ function channelPush() {
 
 function pastVideoPush(){
 
-    
-    $('#vid1').attr('src',user.pastvideo1);
-    $('#vid2').attr('src',user.pastvideo2);
-    $('#vid3').attr('src',user.pastvideo3);
-    $('#vid4').attr('src',user.pastvideo4);
-    
-    
+
+        $('#vid1').attr('src',user.pastvideo1);
+        $('#vid1url').attr('href',user.pastvideo1url);
+
+        $('#vid2').attr('src',user.pastvideo2);
+        $('#vid2url').attr('href',user.pastvideo2url);
+
+        $('#vid3').attr('src',user.pastvideo3);
+        $('#vid3url').attr('href',user.pastvideo3url);
+
+        $('#vid4').attr('src',user.pastvideo4);
+        $('#vid4url').attr('href',user.pastvideo4url);
+
+
+
 }
 
 
