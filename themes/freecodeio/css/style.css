@@ -1,0 +1,57 @@
+#viewer_cont,
+#viewers {
+  display: inline;
+}
+
+.container {
+  width: 800px;
+  padding-top: 60px;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#preview {
+  text-align: center;
+  padding-left: 50%;
+}
+
+#description,
+#viewercount {
+  text-align: center;
+}
+
+#usernamesearch {
+  text-align: center;
+  width: 250px;
+  display: inline;
+}
+
+#logo {
+  width: 150px;
+  height: 150px;
+}
+
+#streamimg {
+  width: 200px;
+  height: 200px;
+}
+
+#searchdiv {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  padding-left: 8%;
+  margin-top: -70px;
+  /*   margin-top:-65px; */
+}
+
+#streamstatusdiv {
+  width: 400px;
+}

@@ -1,0 +1,9 @@
+{
+  "author": "Mtechnik",
+  "name": "TwitchAPI.Markdown",
+  "version": "0.0.1",
+  "dependencies": {
+    "async": "^1.4.2",
+    "impatricklol/twitchapi": "dev-master"
+  }
+}
