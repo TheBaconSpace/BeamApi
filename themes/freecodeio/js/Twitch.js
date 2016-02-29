@@ -160,6 +160,7 @@ function streamPush() {
             $('#useronline').addClass('label-success');
             $('#useronline').html('ONLINE');
               $('#useronline').css('opacity','.70');
+              $('.videoinfo').html(user.streamdesc);
         } else {
             $('#useronline').addClass('label-danger');
             $('#useronline').removeClass('label-success');
