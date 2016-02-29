@@ -66,6 +66,7 @@ searchUser = function(searchName) {
         console.log(name_);
           user.streamdesc='';
         user.name = data.display_name;
+
         user.bio = data.bio;
         user.chaturl= "https://www.twitch.tv/"+name_+"/chat"; // chat url fetch
       $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel='+user.name.toLowerCase());
@@ -161,7 +162,7 @@ function userPush() {
         $('.name').html(user.name);
 
         if (user.bio === '') {
-            user.bio = ('\n' + user.name + ' Is incredibly lazy and has not filled out his bio.');
+            user.bio = ('\n'+ user.name + ' Is incredibly lazy and has not filled out his bio.');
         }
         $('#bio').html(user.bio);
         $('#logo').attr('src', user.logo);
