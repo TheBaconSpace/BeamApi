@@ -58,7 +58,7 @@ var searchUser = function(name_) { // pull json data from users URL
     user.bio = data.bio;
     if (data.logo) {
       user.logo = data.logo;
-   setDefaults();
+
 
 
 
@@ -69,6 +69,7 @@ var searchUser = function(name_) { // pull json data from users URL
   }).fail(function() { // when getJSON finishes, execute userpush() function.... if fails, execute userpush() function
     window.alert('User does not exist, please try again'); // Make Prettier :)
   }).done(function() {
+       setDefaults();
     userPush();
     checkStream();
 
