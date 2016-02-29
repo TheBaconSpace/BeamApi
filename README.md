@@ -1,12 +1,18 @@
 #TwitchAPI.Markdown
 
 Made By JackeL [freecodecamp](http://freecodecamp.com)
-Contributed By Mtechnik [LetsCode.Online](http://letscode.online)
+
+Contributed By:
+    Mtechnik [LetsCode.Online](http://letscode.online)
+    Akira [LetsCode.Online](http://letscode.online)
+    GregBobsled  [LetsCode.Online](http://letscode.online)
 
 Twitter is [@fragumz](http://www.twitter.com/fragumz)
 
-Mtechnik Twitch Stream is [Twitch.tv](http://twitch.tv/fragumz)
-JackeL Twitch Stream is [Twitch.tv](http://twitch.tv/freecodecamp)
+Mtechnik Twitch Stream: [Twitch.tv](http://twitch.tv/fragumz)
+JackeL Twitch Stream: [Twitch.tv](http://twitch.tv/JackeL_27)
+freecodecamp Twitch Stream: [Twitch.tv](http://twitch.tv/FreeCodeCamp)
+SimilatedGREG Twitch Stream: [Twitch.tv](http://twitch.tv/simulatedgreg)
 
 See: ### #Twitch API.markdown for original developer info
 
