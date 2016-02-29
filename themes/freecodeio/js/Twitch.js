@@ -3,8 +3,13 @@
 /---David Kaiser[JACKEL]---------------------------------------------\
 /-------------------Idea by FreeCodeCamp.com Twitch Challenge---------\
 /-----------------------------------------------------------2016-------\
-/--ver.1.5--------------------------------------------------------------\
+/--ver.1.6--------------------------------------------------------------\
 */
+
+
+
+
+
 $(document).ready(function() {
     searchUser('freecodecamp'); // on page load, pass user freecodecamp
 });
@@ -16,6 +21,8 @@ var user = {
     logo: '',
     streamdesc: 'Not Live',
     streamlogo: '',
+    videourl:'',
+    chaturl:'',
     profileurl: '',
     viewers: '0',
     islive: 'false',
@@ -47,7 +54,9 @@ var user = {
         }
     }
 }
-
+/*
+"http://www.twitch.tv//chat"
+*/
 
     // pull json data from users URL
 searchUser = function(searchName) {
@@ -55,10 +64,14 @@ searchUser = function(searchName) {
 
     $.getJSON('https://api.twitch.tv/kraken/users/' + name_, function(data) {
         console.log(name_);
+          user.streamdesc='';
         user.name = data.display_name;
         user.bio = data.bio;
+        user.chaturl= "https://www.twitch.tv/"+name_+"/chat"; // chat url fetch
+      $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel='+user.name.toLowerCase());
         if (data.logo) {
             user.logo = data.logo;
+
         } else {
             //default user logo
             user.logo =
@@ -71,6 +84,8 @@ searchUser = function(searchName) {
       user.pastvideos[1].url = 'http://placehold.it/500x300';
       user.pastvideos[2].url = 'http://placehold.it/500x300';
       user.pastvideos[3].url = 'http://placehold.it/500x300';
+        user.streamdesc='';
+
         userPush(); // jQuery to pass data
         checkStream(); // execute to pull stream data if any...
     });
@@ -108,6 +123,7 @@ searchUser = function(searchName) {
                         user.pastvideos[x].title = data.videos[x].title;
                         user.pastvideos[x].views = data.videos[x].views;
                         user.pastvideos[x].url = data.videos[x].url;
+
                     }
                 }
             }).done(function() {
@@ -143,11 +159,14 @@ $('#searchbtn').on('click', function() {
 
 function userPush() {
         $('.name').html(user.name);
+
         if (user.bio === '') {
-            user.bio = ('\n' + user.name + 'has not filled out his bio.');
+            user.bio = ('\n' + user.name + ' Is incredibly lazy and has not filled out his bio.');
         }
         $('#bio').html(user.bio);
         $('#logo').attr('src', user.logo);
+        $('.chat').attr('src', user.chaturl);
+            $('.videoinfo').html(user.streamdesc);
 
     }
     // streamPush executed when json request |checkStream()|  succeeds
@@ -160,14 +179,21 @@ function streamPush() {
             $('#useronline').addClass('label-success');
             $('#useronline').html('ONLINE');
               $('#useronline').css('opacity','.70');
+              $('.videoinfo').html(user.streamdesc);
+
         } else {
+
             $('#useronline').addClass('label-danger');
             $('#useronline').removeClass('label-success');
             $('#useronline').html('OFFLINE');
             $('#useronline').css('opacity','1.0');
+                $('.videoinfo').html(user.streamdesc);
         }
     }
     // channelPush executed when json request |checkChannel()|  succeeds
+
+
+
 
 function channelPush() {
     $('.user_url').attr('href', user.profileurl);
