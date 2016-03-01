@@ -3,7 +3,7 @@
   "name": "TwitchAPI.Markdown",
   "version": "0.0.1",
   "dependencies": {
-    "async": "^1.4.2",
-    "impatricklol/twitchapi": "dev-master"
+    "bootstrap": "^3.3.6",
+    "tmi.js": "0.0.27"
   }
 }

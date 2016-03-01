@@ -3,118 +3,99 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+
 @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
-
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    font-size: 2em;
-    background-image: url('http://s23.postimg.org/qazv5fqgb/background.png');
-    background-position: center;
-    background-size: cover;
+  padding-top: 70px;
+  /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+  font-size: 2em;
+  background-image: url('http://s23.postimg.org/qazv5fqgb/background.png');
+  background-position: center;
+  background-size: cover;
 }
-h3{
-  font-size:2.3em;
+h3 {
+  font-size: 2.3em;
 }
-
-
 .portfolio-item {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
-
 footer {
-    margin: 50px 0;
+  margin: 50px 0;
 }
-
 #useronline {
-    margin-bottom: 10px;
-
-    position: absolute;
+  margin-bottom: 10px;
+  position: absolute;
   right: 5px;
   opacity: 1.0;
 }
-
-#useronline, #viewerswatching, #viewers{
-    color:white;
-    font-weight: bold;
-    cursor: default;
-
+#useronline, #viewerswatching, #viewers {
+  color: white;
+  font-weight: bold;
+  cursor: default;
 }
-#viewers{
-      margin-left: -8px;
+#viewers {
+  margin-left: -8px;
 }
-
-
-
-
-#rightcol{
-      text-align: center;
+#rightcol {
+  text-align: center;
 }
-
-
-.col-md-4{
+.col-md-4 {
   text-align: left;
 }
-
-.input-group{
+.input-group {
   width: 100%;
-margin-left: auto;
-margin-right: auto;
-    margin-top: 11px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 11px;
 }
-
-.videoinfo{
+.videoinfo {
   padding-top: 5px;
   text-align: left;
   padding-left: 5px;
 }
-
-
-.userblock{
-display: inline-flex;
- width: 100%;
- margin: 0 auto;
- margin-bottom: 10px;
+.userblock {
+  display: inline-flex;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
-#viewer_cont{
+#viewer_cont {
   margin-bottom: -40px;
   padding: inherit;
 }
-.row{
+.row {
   margin-left: 0px;
   margin-right: 0px;
 }
-
-
-#bio{
+#bio {
   margin-left: 14px;
-    margin-top: 6px;
+  margin-top: 6px;
 }
-.name{
+.name {
   margin-bottom: -10px;
   margin-top: 32px;
   font-family: 'Indie Flower', cursive;
-  font-size:2em;
+  font-size: 2em;
 }
-#usernamesearch{
-      text-align: center;
+#usernamesearch {
+  text-align: center;
 }
-#usernamesearch, #searchbtn{
-height: 3em;
+#usernamesearch, #searchbtn {
+  height: 3em;
 }
-.input-group{
-
-    margin-right: 10%;
+.input-group {
+  margin-right: 10%;
 }
-.userblock{
-      margin-bottom: 10px;
+.userblock {
+  margin-bottom: 10px;
 }
-.btn-search{
-  color:white;
+.btn-search {
+  color: white;
   background-color: #6441a5;
 }
-
-.search-form{
+.search-form {
   border-radius: 15px;
   border-color: #6441a5;
-
 }
+
+#previousstreams, #viewer_cont { display: none; }
