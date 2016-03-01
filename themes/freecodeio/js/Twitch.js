@@ -32,28 +32,32 @@ var user = {
             vid: '',
             url: '',
             title: '',
-            views: ''
+            views: '',
+            recid:''
         },
         '1': {
             vid: '',
             url: '',
             title: '',
-            views: ''
+            views: '',
+            recid:''
         },
         '2': {
             vid: '',
             url: '',
             title: '',
-            views: ''
+            views: '',
+            recid:''
         },
         '3': {
             vid: '',
             url: '',
             title: '',
-            views: ''
+            views: '',
+            recid:''
         }
     }
-}
+};
 /*
 "http://www.twitch.tv//chat"
 */
@@ -70,6 +74,10 @@ searchUser = function(searchName) {
         user.bio = data.bio;
         user.chaturl= "http://gregchat.xyz/"+name_; // chat url fetch
       $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel='+user.name.toLowerCase());
+
+
+  //$('.video_iframe').attr('src', 'https://player.twitch.tv/?video=v51675450');
+
         if (data.logo) {
             user.logo = data.logo;
 
@@ -90,7 +98,7 @@ searchUser = function(searchName) {
         userPush(); // jQuery to pass data
         checkStream(); // execute to pull stream data if any...
     });
-  }
+  };
 
     function checkStream() {
             $.getJSON('https://api.twitch.tv/kraken/streams/' + name_,
@@ -116,15 +124,15 @@ searchUser = function(searchName) {
         // working on pushing previous channels....
 
     function channelVideosPush() {
-        $.getJSON("https://api.twitch.tv/kraken/channels/" + name_ +
-            "/videos", function(data) {
+      //https://api.twitch.tv/kraken/channels/freecodecamp/videos?broadcasts=true
+        $.getJSON("https://api.twitch.tv/kraken/channels/"+name_+"/videos?broadcasts=true", function(data) {
                 for (var x = 0; x < 4; x++) {
                     if (data.videos[x]) {
                         user.pastvideos[x].vid = data.videos[x].preview;
                         user.pastvideos[x].title = data.videos[x].title;
                         user.pastvideos[x].views = data.videos[x].views;
                         user.pastvideos[x].url = data.videos[x].url;
-
+                        user.pastvideos[x].recid = data.videos[x]._id;
                     }else{
                       user.pastvideos[x].vid = "";
                     }
@@ -133,6 +141,10 @@ searchUser = function(searchName) {
             pastVideoPush();
         });
     }
+
+
+
+
 
     function checkChannel() {
         $.getJSON('https://api.twitch.tv/kraken/channels/' + name_,
@@ -169,7 +181,7 @@ function userPush() {
         $('#bio').html(user.bio);
         $('#logo').attr('src', user.logo);
         $('.chat').attr('src', user.chaturl);
-            $('.videoinfo').html(user.streamdesc);
+          $('.videoinfo').html(user.streamdesc);
 
     }
     // streamPush executed when json request |checkStream()|  succeeds
@@ -190,7 +202,7 @@ function streamPush() {
             $('#useronline').removeClass('label-success');
             $('#useronline').html('OFFLINE');
             $('#useronline').css('opacity','1.0');
-                $('.videoinfo').html(user.streamdesc);
+              //  $('.videoinfo').html(user.streamdesc);
         }
     }
     // channelPush executed when json request |checkChannel()|  succeeds
@@ -217,7 +229,7 @@ function pastVideoPush() {
     $('#vid4url').attr('href', user.pastvideos[3].url);
 }
 $('#usernamesearch').keypress(function(event) {
-    if (event.which == 13) {
+    if (event.which === 13) {
         searchUser($('#usernamesearch').val());
     }
 });
