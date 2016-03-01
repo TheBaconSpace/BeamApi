@@ -1,7 +1,7 @@
 {
   "author": "Mtechnik",
-  "name": "TwitchAPI.Markdown",
-  "version": "0.0.1",
+  "name": "TwitchAPI",
+  "version": "0.2.0",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "tmi.js": "0.0.27"
