@@ -38,8 +38,7 @@ Twitch.getUser = function(user) {
 Twitch.getStream = function() {
   $.getJSON('https://api.twitch.tv/kraken/streams/' + Twitch.user.username, function(data) {
     Twitch.stream = data.stream;
-
-    if(Twitch.stream === null) Twitch.render();
+    Twitch.render();
   });
 };
 
@@ -53,6 +52,13 @@ Twitch.render = function() {
   var bio = (this.user.bio === null) ? 'User does not have a bio.' : this.user.bio;
   $user.find('#bio').text(bio);
   if(this.stream === null) return;
+
+  $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel=' + this.user.username);
+  $('#chat_embed').attr('src', 'http://gregchat.xyz/' + this.user.username);
+  $('#streamstatus').text(this.stream.channel.status);
+  $('#gameplaying').text('playing ' + this.stream.game);
+  $('#viewer_cont').show()
+    .find('#viewers').text(this.stream.viewers);
 };
 
 Twitch.init();
