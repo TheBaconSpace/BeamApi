@@ -68,7 +68,7 @@ searchUser = function(searchName) {
         user.name = data.display_name;
 
         user.bio = data.bio;
-        user.chaturl= "https://www.twitch.tv/"+name_+"/chat"; // chat url fetch
+        user.chaturl= "http://gregchat.xyz/"+name_; // chat url fetch
       $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel='+user.name.toLowerCase());
         if (data.logo) {
             user.logo = data.logo;
