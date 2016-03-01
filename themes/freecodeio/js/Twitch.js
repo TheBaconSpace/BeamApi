@@ -1,7 +1,7 @@
 /* global $ */
 /*
-/---David Kaiser[JACKEL]---------------------------------------------\
-/-------------------Idea by FreeCodeCamp.com Twitch Challenge---------\
+/---David Kaiser[JACKEL]Bacon_Space[Bacon_Space]---------------------------------------------\
+/-------------------Idea by FreeCodeCamp.com Beam Challenge---------\
 /-----------------------------------------------------------2016-------\
 /--ver.1.6--------------------------------------------------------------\
 */
@@ -11,7 +11,7 @@
 
 
 $(document).ready(function() {
-    searchUser('freecodecamp'); // on page load, pass user freecodecamp
+    searchUser('Bacon_Space'); // on page load, pass user freecodecamp
 });
 
 var name_ = "";
@@ -66,14 +66,14 @@ var user = {
 searchUser = function(searchName) {
   name_=searchName;
 
-    $.getJSON('https://api.twitch.tv/kraken/users/' + name_, function(data) {
+    $.getJSON('https://beam.pro/api/v1/users' + name_, function(data) {
         console.log(name_);
-          user.streamdesc='';
-        user.name = data.display_name;
+          user.description='';
+        user.name = data.user.username;
 
         user.bio = data.bio;
-        user.chaturl= "http://gregchat.xyz/"+name_; // chat url fetch
-      $('.video_iframe').attr('src', 'http://player.twitch.tv/?channel='+user.name.toLowerCase());
+        user.chaturl= "https://beam.pro/embed/chat/"+name_; // chat url fetch
+      $('.video_iframe').attr('src', 'https://beam.pro/embed/player/'+user.name.toLowerCase());
 
 
   //$('.video_iframe').attr('src', 'https://player.twitch.tv/?video=v51675450');
@@ -101,17 +101,17 @@ searchUser = function(searchName) {
   };
 
     function checkStream() {
-            $.getJSON('https://api.twitch.tv/kraken/streams/' + name_,
+            $.getJSON('https://beam.pro/api/v1/users' + name_,
                 function(data) {
                     if (data.stream !== null) { // if stream is currently live...
                         user.viewers = data.stream.viewers;
                         user.streamlogo = data.stream.preview.large;
                         user.streamdesc = data.stream.channel.status;
-                        user.islive = 'true';
+                        user.online = 'true';
                     } else { // if stream is offline...
                         //user.streamdesc = 'Offline'
-                        user.islive = 'false';
-                        user.viewers =0;
+                        user.online = 'false';
+                        user.viewersTotal =0;
                     }
                 }).fail(function() {
                 window.alert('FAIL'); // need to update this to something... prettier :)
