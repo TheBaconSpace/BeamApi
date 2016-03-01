@@ -125,6 +125,8 @@ searchUser = function(searchName) {
                         user.pastvideos[x].views = data.videos[x].views;
                         user.pastvideos[x].url = data.videos[x].url;
 
+                    }else{
+                      user.pastvideos[x].vid = "";
                     }
                 }
             }).done(function() {
